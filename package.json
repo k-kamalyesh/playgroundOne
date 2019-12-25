@@ -1,0 +1,38 @@
+{
+  "name": "playgroundone",
+  "version": "1.0.0",
+  "description": "games",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack src/index.js --output bin/app.js -d --watch",
+    "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "games",
+    "playgroundOne"
+  ],
+  "author": "Kamalyesh Kannadkar",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/plugin-transform-react-jsx": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "bin": {
+    "playgroundone": "app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-kamalyesh/playgroundOne.git"
+  },
+  "bugs": {
+    "url": "https://github.com/k-kamalyesh/playgroundOne/issues"
+  },
+  "homepage": "https://github.com/k-kamalyesh/playgroundOne#readme"
+}
