@@ -1,7 +1,7 @@
 module.exports = class Game{
     constructor(configuration){
         this.settings(configuration);
-        this.status='initialised';
+        this.init();
     }
 
     settings(configuration){
@@ -11,7 +11,10 @@ module.exports = class Game{
         console.log('Game configuration is ',this.configuration);
         return this.configuration;
     }
-
+    init(){
+        this.status='initialised';
+        console.log('Game has been initialised');
+    }
     start(){
         this.status='started';
         console.log('Game has started');
