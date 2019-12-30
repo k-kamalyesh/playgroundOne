@@ -41,12 +41,18 @@ class TickTackToe extends Game {
                 return {winner:this.configuration.currentPlayerIndex};
             }
         }
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if(board[i][j] !='-' && board[i][j] === board[Math.abs(i+1)%3][Math.abs(j+1)%3] && board[i][j] === board[Math.abs(i+2)%3][Math.abs(j+2)%3]){
-                    return {winner:this.configuration.currentPlayerIndex};
-                }else if(board[i][j] !='-' && board[i][j] === board[Math.abs(i-1)%3][Math.abs(j-1)%3] && board[i][j] === board[Math.abs(i-2)%3][Math.abs(j-2)%3]){
-                    return {winner:this.configuration.currentPlayerIndex};
+        if(board[0][0] !='-' && board[0][0] === board[1][1] && board[0][0] === board[2][2]){
+            return {winner:this.configuration.currentPlayerIndex};
+        }
+        if(board[0][2] !='-' && board[0][2] === board[1][1] && board[0][2] === board[2][0]){
+            return {winner:this.configuration.currentPlayerIndex};
+        }
+        let isDraw = true;
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                isDraw = isDraw && (this.boardValue(row, col) != '-');
+                if(row*col === 4 && isDraw){
+                    return {winner:-1};
                 }
             }
         }
@@ -58,10 +64,14 @@ class TickTackToe extends Game {
         if(!currentValue || currentValue==='-'){
             this.boardValue(row, col, this.configuration.players[this.configuration.currentPlayerIndex].name);
             let winner= this.checkIfGameEnd();
-            if(!winner){
-                this.switchPlayer();
+            if(winner){
+                if(winner.winner === -1){
+                    console.log("This is a draw");
+                }else{
+                    console.log("Winner is ",this.configuration.players[winner.winner]);
+                }
             }else{
-                console.log("Winner is ", winner.winner);
+                this.switchPlayer();
             }
         }else{
             console.log("handle invalid play");
@@ -97,6 +107,7 @@ let TickTackToeView = {
         console.log("removing game view element")
     },
     startGame:()=>{
+        TickTackToeView.oninit();
         game.start();
         m.redraw();  
     },
@@ -193,15 +204,15 @@ let TickTackToeView = {
             }
         },
     },
-    Menu :{
+    MainMenu :{
         view: () => {
-            return m('.game-menu', [
-                m('ul.game-menu-list', [
-                    m('li.game-menu-list-item', {onclick:TickTackToeView.startGame}, "Start"),
-                    m('li.game-menu-list-item', {onclick:TickTackToeView.saveGame}, "Save"),
-                    m('li.game-menu-list-item', {onclick:TickTackToeView.loadGame}, "Load"),
-                    m('li.game-menu-list-item', {onclick:TickTackToeView.settings}, "Settings"),
-                    m('li.game-menu-list-item', {onclick:TickTackToeView.quitGame}, "Quit"),
+            return m('.game-mainmenu', [
+                m('ul.game-mainmenu-list', [
+                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.startGame}, "Start"),
+                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.saveGame}, "Save"),
+                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.loadGame}, "Load"),
+                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.settings}, "Settings"),
+                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.quitGame}, "Quit"),
                 ])
             ])
         }
@@ -229,7 +240,21 @@ let TickTackToeView = {
     },
     WinnerBanner:{
         view:(vnode)=>{
-            return m('.game-winner-banner', vnode.attrs.winner.winner+" has won!")
+            console.log(vnode, vnode.attrs);
+            let winner = vnode.attrs.winner.winner;
+            if(winner==-1){
+                return m('.game-winner-banner-container', [
+                    m('.game-winner-banner',"This is a draw!"),
+                    m('button.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
+                ])
+            }else{
+                winner = game.configuration.players[winner];
+                winner = winner.name;
+                return m('.game-winner-banner-container', [
+                    m('.game-winner-banner',winner+" has won!"),
+                    m('button.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
+                ])
+            }
         }
     },
     Footer:{
@@ -258,20 +283,22 @@ let TickTackToeView = {
     },
     view: (vnode) => {
         let Header = TickTackToe.Header;
-        let Menu = TickTackToe.Menu;
+        let MainMenu = TickTackToe.MainMenu;
         let Board = TickTackToe.Board;
         let Footer = TickTackToe.Footer;
         let winner = game.checkIfGameEnd();
-        if(game.getStatus() === 'paused' || game.getStatus() === 'initialised' || game.getStatus() === 'quit'){
-            return m('.game-controller',[
-                m(TickTackToeView.Header),
-                m(TickTackToeView.Menu)
-            ])
-        }else if(winner){
+        if(winner){
+            console.log('winner', winner);
             return m('.game-controller', [
                 m(TickTackToeView.Header),
                 m(TickTackToeView.WinnerBanner, {winner},),
+                m(TickTackToeView.Board),
                 m(TickTackToeView.Footer),
+            ])
+        }else if(game.getStatus() === 'paused' || game.getStatus() === 'initialised' || game.getStatus() === 'quit'){
+            return m('.game-controller',[
+                m(TickTackToeView.Header),
+                m(TickTackToeView.MainMenu),
             ])
         }else{
             return m('.game-controller', [
