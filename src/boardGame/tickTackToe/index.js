@@ -21,6 +21,7 @@ class TickTackToe extends Game {
     }
     switchPlayer() {
         this.configuration.currentPlayerIndex = (this.configuration.currentPlayerIndex + 1) % 2;
+        console.log('Waiting for player '+this.configuration.players[this.configuration.currentPlayerIndex].name+' to play');
     }
     boardValue(row, col, value=undefined){
         if(value){
@@ -41,23 +42,26 @@ class TickTackToe extends Game {
             }
         }
         for (let i = 0; i < 3; i++) {
-            if(board[i][i] === board[Math.abs(i+1)%3][Math.abs(i+1)%3] === board[Math.abs(i+2)%3][Math.abs(i+2)%3]){
-                return {winner:this.configuration.currentPlayerIndex};
-            }else if(board[i][i] === board[Math.abs(i-1)%3][Math.abs(i-1)%3] === board[Math.abs(i-2)%3][Math.abs(i-2)%3]){
-                return {winner:this.configuration.currentPlayerIndex};
+            for (let j = 0; j < 3; j++) {
+                if(board[i][j] !='-' && board[i][j] === board[Math.abs(i+1)%3][Math.abs(j+1)%3] && board[i][j] === board[Math.abs(i+2)%3][Math.abs(j+2)%3]){
+                    return {winner:this.configuration.currentPlayerIndex};
+                }else if(board[i][j] !='-' && board[i][j] === board[Math.abs(i-1)%3][Math.abs(j-1)%3] && board[i][j] === board[Math.abs(i-2)%3][Math.abs(j-2)%3]){
+                    return {winner:this.configuration.currentPlayerIndex};
+                }
             }
         }
     }
     playTurn(row, col){
         super.playTurn();
+        console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex].name);
         let currentValue=this.boardValue(row, col);
         if(!currentValue || currentValue==='-'){
             this.boardValue(row, col, this.configuration.players[this.configuration.currentPlayerIndex].name);
-            let winner = this.checkIfGameEnd();
+            let winner= this.checkIfGameEnd();
             if(!winner){
                 this.switchPlayer();
             }else{
-                console.log('winner is', winner.winner);
+                console.log("Winner is ", winner.winner);
             }
         }else{
             console.log("handle invalid play");
