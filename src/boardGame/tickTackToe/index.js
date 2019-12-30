@@ -1,6 +1,7 @@
 import m from "mithril"
 import Game from '../../commons/game/game';
 import Player from '../../commons/game/player';
+import './style.css';
 
 // game logic
 class TickTackToe extends Game {
@@ -189,17 +190,17 @@ let TickTackToeView = {
         view: () => {
             if (game.getStatus() === 'paused') {
                 return m('.game-header', [
-                    m('button.btn-continue', {onclick:TickTackToeView.continueGame},'Continue'),
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                    m('button.btn.btn-continue', {onclick:TickTackToeView.continueGame},'Continue'),
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             } else if (game.getStatus() === 'started' || game.getStatus() === 'continued') {
                 return m('.game-header', [
-                    m('button.btn-pause', {onclick:TickTackToeView.pauseGame},'Pause'),
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                    m('button.btn.btn-pause', {onclick:TickTackToeView.pauseGame},'Pause'),
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             } else {
                 return m('.game-header', [
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             }
         },
@@ -208,32 +209,60 @@ let TickTackToeView = {
         view: () => {
             return m('.game-mainmenu', [
                 m('ul.game-mainmenu-list', [
-                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.startGame}, "Start"),
-                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.saveGame}, "Save"),
-                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.loadGame}, "Load"),
-                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.settings}, "Settings"),
-                    m('li.game-mainmenu-list-item', {onclick:TickTackToeView.quitGame}, "Quit"),
+                    m('li.game-mainmenu-list-item', 
+                        m('button.btn', {onclick:TickTackToeView.startGame}, "Start"),
+                    ),
+                    m('li.game-mainmenu-list-item',
+                        m('button.btn', {onclick:TickTackToeView.saveGame}, "Save"),
+                    ),
+                    m('li.game-mainmenu-list-item',
+                        m('button.btn',{onclick:TickTackToeView.loadGame}, "Load"),
+                    ),
+                    m('li.game-mainmenu-list-item',
+                        m('button.btn',{onclick:TickTackToeView.settings}, "Settings"),
+                    ),
+                    m('li.game-mainmenu-list-item', 
+                        m('button.btn',{onclick:TickTackToeView.quitGame}, "Quit"),
+                    ),
                 ])
             ])
         }
     },
     Board:{
         view:()=>{
-            return m('div', [
-                m('div', [
-                    m('button.t3btn#b00', {onclick:()=>game.playTurn(0, 0)}, game.boardValue(0, 0)),
-                    m('button.t3btn#b01', {onclick:()=>game.playTurn(0, 1)}, game.boardValue(0, 1)),
-                    m('button.t3btn#b02', {onclick:()=>game.playTurn(0, 2)}, game.boardValue(0, 2)),
+            return m('.game-board', [
+                m('.game-board-row', [
+                    m('.game-board-col',
+                        m('button.t3btn#b00', {onclick:()=>game.playTurn(0, 0)}, game.boardValue(0, 0)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b01', {onclick:()=>game.playTurn(0, 1)}, game.boardValue(0, 1)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b02', {onclick:()=>game.playTurn(0, 2)}, game.boardValue(0, 2)),
+                    ),
                 ]),
                 m('div', [
-                    m('button.t3btn#b10', {onclick:()=>game.playTurn(1, 0)}, game.boardValue(1, 0)),
-                    m('button.t3btn#b11', {onclick:()=>game.playTurn(1, 1)}, game.boardValue(1, 1)),
-                    m('button.t3btn#b12', {onclick:()=>game.playTurn(1, 2)}, game.boardValue(1, 2)),
+                    m('.game-board-col',
+                        m('button.t3btn#b10', {onclick:()=>game.playTurn(1, 0)}, game.boardValue(1, 0)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b11', {onclick:()=>game.playTurn(1, 1)}, game.boardValue(1, 1)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b12', {onclick:()=>game.playTurn(1, 2)}, game.boardValue(1, 2)),
+                    ),
                 ]),
                 m('div', [
-                    m('button.t3btn#b20', {onclick:()=>game.playTurn(2, 0)}, game.boardValue(2, 0)),
-                    m('button.t3btn#b21', {onclick:()=>game.playTurn(2, 1)}, game.boardValue(2, 1)),
-                    m('button.t3btn#b22', {onclick:()=>game.playTurn(2, 2)}, game.boardValue(2, 2)),
+                    m('.game-board-col',
+                        m('button.t3btn#b20', {onclick:()=>game.playTurn(2, 0)}, game.boardValue(2, 0)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b21', {onclick:()=>game.playTurn(2, 1)}, game.boardValue(2, 1)),
+                    ),
+                    m('.game-board-col',
+                        m('button.t3btn#b22', {onclick:()=>game.playTurn(2, 2)}, game.boardValue(2, 2)),
+                    ),
                 ])
             ])
         }
@@ -243,16 +272,16 @@ let TickTackToeView = {
             console.log(vnode, vnode.attrs);
             let winner = vnode.attrs.winner.winner;
             if(winner==-1){
-                return m('.game-winner-banner-container', [
-                    m('.game-winner-banner',"This is a draw!"),
-                    m('button.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
+                return m('.game-winner-banner', [
+                    m('.game-winner-message',"This is a draw!"),
+                    m('button.btn.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
                 ])
             }else{
                 winner = game.configuration.players[winner];
                 winner = winner.name;
-                return m('.game-winner-banner-container', [
+                return m('.game-winner-message', [
                     m('.game-winner-banner',winner+" has won!"),
-                    m('button.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
+                    m('button.btn.btn-restart', {onclick:TickTackToeView.startGame}, 'Start Again'),
                 ])
             }
         }
@@ -265,18 +294,18 @@ let TickTackToeView = {
         },
         view: () => {
             if (game.getStatus() === 'paused') {
-                return m('.game-header', [
-                    m('button.btn-continue', {onclick:TickTackToeView.continueGame}, 'Continue'),
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                return m('.game-footer', [
+                    m('button.btn.btn-continue', {onclick:TickTackToeView.continueGame}, 'Continue'),
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             } else if (game.getStatus() === 'started' || game.getStatus() === 'continued') {
-                return m('.game-header', [
-                    m('button.btn-pause', {onclick:TickTackToeView.pauseGame}, 'Pause'),
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                return m('.game-footer', [
+                    m('button.btn.btn-pause', {onclick:TickTackToeView.pauseGame}, 'Pause'),
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             } else {
-                return m('.game-header', [
-                    m('button.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
+                return m('.game-footer', [
+                    m('button.btn.btn-quit', {onclick:TickTackToeView.quitGame},'Quit'),
                 ])
             }
         },
