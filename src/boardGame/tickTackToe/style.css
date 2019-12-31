@@ -11,26 +11,30 @@
 
 .game-controller .game-header{
     position:fixed;
-    width:100%;
+    width:500px;
+    height: 50px !important;
+    top: inherit;
 }
 .game-controller .game-footer{
     position:fixed;
-    width:100%;
+    width:500px;
+    height: 50px !important;
+    top: 450px;
 }
 .game-controller .game-winner-banner{
-    margin-top: 5%;
-    width:100%;
+    position: fixed;
+    text-align: center;
+    top:5%;
+    width:500px;
 }
 .game-controller .game-mainmenu{
-    width:100%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    width:80%;
+    margin: 10%;
 }
 .game-controller .game-board{
-    width:100%;
+    width:300px;
     display:flex;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin: 20%;
 }
 
 .game-controller .btn{
@@ -44,18 +48,32 @@
     opacity: 1.0;
 }
 
+.game-header .btn {
+    display: inline;
+    margin: 0px 10px;
+    padding: 1px 2px;
+}
+
+.game-footer .btn {
+    display: inline;
+    margin: 0px 10px;
+    padding: 1px 2px;
+}
+
 .game-mainmenu .game-mainmenu-list{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    justify-items: center;
     background-color: burlywood;
+    padding:10% 0px;
+    margin: 5% 0px;
+    text-align: center;
 }
 
 .game-mainmenu-list .game-mainmenu-list-item{
     width: 100%;
     display:inline-block;
+    margin: 2% 0%;
 }
 
 .game-mainmenu-list-item .btn{
@@ -84,10 +102,22 @@
     background-color: white;
 }
 
-.t3btn, .t3player1{
-    colot:red;
+.t3btn .t3playerX{
+    color:red;
 }
 
-.t3btn, .t3player1{
-    colot:green;
+.t3btn .t3playerO{
+    color:green;
+}
+
+.game-winner-banner .game-winner-message{
+    position: relative;
+    width: 20%;
+    display: inline-block !important;
+}
+
+.game-winner-banner .btn {
+    position: relative;
+    width: 10%;
+    display: inline-block !important;
 }
