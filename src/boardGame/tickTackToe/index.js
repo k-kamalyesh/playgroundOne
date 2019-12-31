@@ -15,6 +15,7 @@ class TickTackToe extends Game {
         this.settings({
             gameName:'Tick-Tack-Toe',
             players,
+            winner:undefined,
             currentPlayerIndex,
             board:[['-', '-', '-'],['-', '-', '-'],['-', '-', '-']],
             history:[]
@@ -34,32 +35,41 @@ class TickTackToe extends Game {
         let {board} = this.configuration;
         for (let row = 0; row < 3; row++) {
             if(board[row][0] != '-' && board[row][0] === board[row][1] && board[row][0] === board[row][2]){
-                return {winner:this.configuration.currentPlayerIndex};
+                this.winner = {winner:this.configuration.currentPlayerIndex};
+                return this.winner;
             }
         }
         for (let col = 0; col < 3; col++) {
             if(board[0][col] != '-' &&  board[0][col] === board[1][col] && board[0][col] === board[2][col]){
-                return {winner:this.configuration.currentPlayerIndex};
+                this.winner = {winner:this.configuration.currentPlayerIndex};
+                return this.winner;
             }
         }
         if(board[0][0] !='-' && board[0][0] === board[1][1] && board[0][0] === board[2][2]){
-            return {winner:this.configuration.currentPlayerIndex};
+            this.winner=  {winner:this.configuration.currentPlayerIndex};
+            return this.winner;
         }
         if(board[0][2] !='-' && board[0][2] === board[1][1] && board[0][2] === board[2][0]){
-            return {winner:this.configuration.currentPlayerIndex};
+            this.winner =  {winner:this.configuration.currentPlayerIndex};
+            return this.winner;
         }
         let isDraw = true;
         for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 3; col++) {
                 isDraw = isDraw && (this.boardValue(row, col) != '-');
                 if(row*col === 4 && isDraw){
-                    return {winner:-1};
+                    this.winner = {winner:-1};
+                    return this.winner;
                 }
             }
         }
     }
     playTurn(row, col){
         super.playTurn();
+        if(this.winner){
+            console.log("The game has already ended");
+            return;
+        }
         console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex].name);
         let currentValue=this.boardValue(row, col);
         if(!currentValue || currentValue==='-'){
@@ -210,7 +220,7 @@ let TickTackToeView = {
             return m('.game-mainmenu', [
                 m('ul.game-mainmenu-list', [
                     m('li.game-mainmenu-list-item', 
-                        m('button.btn', {onclick:TickTackToeView.startGame}, "Start"),
+                        game.getStatus()==="paused"?m('button.btn', {onclick:TickTackToeView.continueGame}, "Continue"):m('button.btn', {onclick:TickTackToeView.startGame}, "Start"),
                     ),
                     m('li.game-mainmenu-list-item',
                         m('button.btn', {onclick:TickTackToeView.saveGame}, "Save"),

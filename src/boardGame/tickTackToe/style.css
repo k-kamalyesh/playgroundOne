@@ -18,6 +18,7 @@
     width:100%;
 }
 .game-controller .game-winner-banner{
+    margin-top: 5%;
     width:100%;
 }
 .game-controller .game-mainmenu{
@@ -78,4 +79,15 @@
 .game-board-col .t3btn{
     width: 100px;
     height: 100px !important;
+    border: 2px black solid;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.t3btn, .t3player1{
+    colot:red;
+}
+
+.t3btn, .t3player1{
+    colot:green;
 }
