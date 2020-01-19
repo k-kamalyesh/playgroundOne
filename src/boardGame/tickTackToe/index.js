@@ -282,21 +282,21 @@ let TickTackToeView = {
             console.log(vnode, vnode.attrs);
             let winner = vnode.attrs.winner;
             if (winner && winner.winner == -1) {
-                return m('.game-winner-banner', [
-                    m('.game-winner-message', "This is a draw!"),
+                return m('.game-banner', [
+                    m('.game-message', "This is a draw!"),
                     m('button.btn.btn-restart', { onclick: TickTackToeView.startGame }, 'Start Again'),
                 ])
             } else if (winner && winner.winner > -1) {
                 winner = game.configuration.players[winner.winner];
                 winner = winner.name;
-                return m('.game-winner-banner', [
-                    m('.game-winner-message', winner + " has won!"),
+                return m('.game-banner', [
+                    m('.game-message', winner + " has won!"),
                     m('button.btn.btn-restart', { onclick: TickTackToeView.startGame }, 'Start Again'),
                 ])
             } else {
                 let currentPlayer = game.configuration.players[game.configuration.currentPlayerIndex];
-                return m('.game-winner-banner', [
-                    m('.game-winner-message', "Now playing " + currentPlayer.name),
+                return m('.game-banner', [
+                    m('.game-message', "Now playing " + currentPlayer.name),
                 ])
             }
         }

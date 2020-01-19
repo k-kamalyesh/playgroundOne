@@ -19,12 +19,12 @@
     position:fixed;
     width:500px;
     height: 50px !important;
-    top: 450px;
+    top: 550px;
 }
-.game-controller .game-winner-banner{
+.game-controller .game-banner{
     position: fixed;
     text-align: center;
-    top:5%;
+    top:125px;
     width:500px;
 }
 .game-controller .game-mainmenu{
@@ -110,13 +110,12 @@
     color:green;
 }
 
-.game-winner-banner .game-winner-message{
+.game-banner .game-message{
     position: relative;
-    width: 20%;
     display: inline-block !important;
 }
 
-.game-winner-banner .btn {
+.game-banner .btn {
     position: relative;
     width: 10%;
     display: inline-block !important;
