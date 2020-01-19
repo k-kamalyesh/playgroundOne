@@ -1,0 +1,9 @@
+game-routes{
+    display:block;
+}
+
+game-routes > p,a {
+    box-sizing: border-box;
+    padding: 2px;
+    display: inline-block;
+}

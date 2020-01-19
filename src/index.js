@@ -1,5 +1,12 @@
 import m from "mithril";
-import TickTackToe from './boardGame/tickTackToe/index';
+import Routes from "./routes/index"
+import GameList from "./routes/gamelist"
 
-// let tickTackToe = m('div', TickTackToe)
-m.mount(document.getElementById('game-content'), TickTackToe);
+m.mount(document.getElementById("game-nav"), Routes.NavMenu);
+
+m.route(document.getElementById("game-router"), "/home", {
+    "/home": Routes.Home,
+    "/about": Routes.About,
+    "/help": Routes.Help,
+    "/games/t3": GameList.TickTackToe
+})
