@@ -1,28 +1,28 @@
 module.exports = class Player{
-    constructor(name, color, position=0){
-        this.name(name);
-        this.color(color);
-        this.position(position);
+    constructor(playerName, playerColor, playerPosition=0){
+        this.name(playerName);
+        this.color(playerColor);
+        this.position(playerPosition);
     }
 
-    name(name){
-        if(name){
-            this.name = name;
+    name(playerName){
+        if(playerName){
+            this._name = playerName;
         }
-        return this.name;
+        return this._name;
     }
 
-    color(color){
-        if(color){
-            this.color = color;
+    color(playerColor){
+        if(playerColor){
+            this._color = playerColor;
         }
-        return this.color;
+        return this._color;
     }
 
-    position(position){
-        if(position){
-            this.position = position;
+    position(playerPosition){
+        if(!isNaN(playerPosition)){
+            this._position = playerPosition;
         }
-        return this.getPosition;
+        return this._position;
     }
 }
