@@ -23,7 +23,7 @@ class TickTackToe extends Game {
     }
     switchPlayer() {
         this.configuration.currentPlayerIndex = (this.configuration.currentPlayerIndex + 1) % 2;
-        console.log('Waiting for player ' + this.configuration.players[this.configuration.currentPlayerIndex].name + ' to play');
+        console.log('Waiting for player ' + this.configuration.players[this.configuration.currentPlayerIndex]._name + ' to play');
     }
     boardValue(row, col, value = undefined) {
         if (value) {
@@ -70,10 +70,10 @@ class TickTackToe extends Game {
             console.log("The game has already ended");
             return;
         }
-        console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex].name);
+        console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex]._name);
         let currentValue = this.boardValue(row, col);
         if (!currentValue || currentValue === '-') {
-            this.boardValue(row, col, this.configuration.players[this.configuration.currentPlayerIndex].name);
+            this.boardValue(row, col, this.configuration.players[this.configuration.currentPlayerIndex]._name);
             let winner = this.checkIfGameEnd();
             if (winner) {
                 if (winner.winner === -1) {
@@ -288,7 +288,7 @@ let TickTackToeView = {
                 ])
             } else if (winner && winner.winner > -1) {
                 winner = game.configuration.players[winner.winner];
-                winner = winner.name;
+                winner = winner._name;
                 return m('.game-banner', [
                     m('.game-message', winner + " has won!"),
                     m('button.btn.btn-restart', { onclick: TickTackToeView.startGame }, 'Start Again'),
@@ -296,7 +296,7 @@ let TickTackToeView = {
             } else {
                 let currentPlayer = game.configuration.players[game.configuration.currentPlayerIndex];
                 return m('.game-banner', [
-                    m('.game-message', "Now playing " + currentPlayer.name),
+                    m('.game-message', "Now playing " + currentPlayer._name),
                 ])
             }
         }
