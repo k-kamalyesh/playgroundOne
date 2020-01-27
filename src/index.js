@@ -8,5 +8,6 @@ m.route(document.getElementById("game-router"), "/home", {
     "/home": Routes.Home,
     "/about": Routes.About,
     "/help": Routes.Help,
-    "/games/t3": GameList.TickTackToe
+    "/games/t3": GameList.TickTackToe,
+    "/games/sl": GameList.SnakesLadders,
 })

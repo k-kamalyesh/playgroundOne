@@ -9,6 +9,7 @@ let NavMenu = {
             m("game-routes", [
                 m("p", "Games"),
                 m(m.route.Link, {href: "/games/t3"}, "T3"),
+                m(m.route.Link, {href: "/games/sl"}, "SnakesLadders"),
             ])
         ])
     }
