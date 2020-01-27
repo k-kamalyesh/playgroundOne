@@ -1,0 +1,134 @@
+*{
+    box-sizing: border-box;
+}
+.game-controller{
+    width: 500px !important;
+    height: 500px !important;
+    display:flex;
+    flex-direction: column;
+    border: solid 1px black;
+}
+
+.game-controller .game-header{
+    position:fixed;
+    width:500px;
+    height: 50px !important;
+    top: inherit;
+}
+.game-controller .game-footer{
+    position:fixed;
+    width:500px;
+    height: 50px !important;
+    top: 550px;
+}
+.game-controller .game-banner{
+    position: fixed;
+    text-align: center;
+    top:125px;
+    width:500px;
+}
+.game-controller .game-mainmenu{
+    width:80%;
+    margin: 10%;
+}
+.game-controller .game-board{
+    width:300px;
+    display:flex;
+    margin: 20%;
+}
+
+.game-controller .btn{
+    text-decoration: none;
+    padding: 2px;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+.game-controller .btn:hover{
+    box-shadow: 1px 1px 1px 1px;
+    opacity: 1.0;
+}
+
+.game-header .btn {
+    display: inline;
+    margin: 0px 10px;
+    padding: 1px 2px;
+}
+
+.game-footer .btn {
+    display: inline;
+    margin: 0px 10px;
+    padding: 1px 2px;
+}
+
+.game-mainmenu .game-mainmenu-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    padding:10% 0px;
+    margin: 5% 0px;
+    text-align: center;
+}
+
+.game-mainmenu-list .game-mainmenu-list-item{
+    width: 100%;
+    display:inline-block;
+    margin: 2% 0%;
+}
+
+.game-mainmenu-list-item .btn{
+    width: 60%;
+    background-color: papayawhip;
+}
+.game-mainmenu-list-item .btn:hover{
+    width: 70%;
+}
+
+.game-board .game-board-row{
+    display:flex;
+    flex-direction: column;
+}
+.game-board-row .game-board-col{
+    display:flex;    
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.game-board-col .s-l-cell{
+    width: 30px;
+    height: 30px !important;
+    border: 2px black solid;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.s-l-cell .s-l-red{
+    color: white;
+    background-color:red;
+}
+
+.s-l-cell .s-l-green{
+    color: white;
+    background-color:green;
+}
+
+.s-l-cell .s-l-blue{
+    color: white;
+    background-color:blue;
+}
+
+.s-l-cell .s-l-yellow {
+    color: white;
+    background-color:darkorange;
+}
+
+.game-banner .game-message{
+    position: relative;
+    display: inline-block !important;
+}
+
+.game-banner .btn {
+    position: relative;
+    width: 10%;
+    display: inline-block !important;
+}
