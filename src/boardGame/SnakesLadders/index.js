@@ -14,6 +14,90 @@ class SnakesLadders extends Game {
             new Player('p3', 'yellow', 0),
             new Player('p4', 'blue', 0),
         ]
+        let snakes = [
+            {
+                from:10,
+                to:1
+            },
+            {
+                from:20,
+                to:11
+            },
+            {
+                from:30,
+                to:21
+            },
+            {
+                from:40,
+                to:31
+            },
+            {
+                from:50,
+                to:41
+            },
+            {
+                from:60,
+                to:51
+            },
+            {
+                from:70,
+                to:61
+            },
+            {
+                from:80,
+                to:71
+            },
+            {
+                from:89,
+                to:81
+            },
+            {
+                from:99,
+                to:11
+            },
+        ]
+        let ladders = [
+            {
+                from:2,
+                to:12
+            },
+            {
+                from:22,
+                to:31
+            },
+            {
+                from:30,
+                to:81
+            },
+            {
+                from:4,
+                to:91
+            },
+            {
+                from:50,
+                to:68
+            },
+            {
+                from:33,
+                to:55
+            },
+            {
+                from:48,
+                to:61
+            },
+            {
+                from:80,
+                to:71
+            },
+            {
+                from:89,
+                to:81
+            },
+            {
+                from:99,
+                to:11
+            },
+        ]
         let currentPlayerIndex = 0;
         let board = [];
         for (let index = 0; index < 10; index++) {
@@ -34,6 +118,8 @@ class SnakesLadders extends Game {
             winner: undefined,
             currentPlayerIndex,
             board,
+            snakes,
+            ladders,
             history: []
         });
 
@@ -67,10 +153,24 @@ class SnakesLadders extends Game {
         let currentPlayer = this.configuration.players[this.configuration.currentPlayerIndex]
         // get board row and col at current player position
         let currentPlayerPosition = currentPlayer.position();
+        let savedPlayerPosition = currentPlayerPosition;
         this.configuration.currentDiceFace = this.configuration.dice.rollTheDice();
         currentPlayerPosition += this.configuration.currentDiceFace;
         console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex]._name);
-        if (currentPlayerPosition <= 100) {
+        if(savedPlayerPosition == 0 && currentPlayerPosition != 1){
+            let message = "game starts when you get a 1 on the dice";
+            console.log(message);
+            alert(message);
+        } else if (currentPlayerPosition <= 100) {
+            let newPosSnakes = this.configuration.snakes.find(snake=>snake.from == currentPlayerPosition)
+            let newPosLadders = this.configuration.ladders.find(ladder=>ladder.from == currentPlayerPosition)
+            if(newPosSnakes){
+                currentPlayerPosition = newPosSnakes.to;
+                alert("A snake caught you. Now you are on "+currentPlayerPosition);
+            }else if(newPosLadders){
+                currentPlayerPosition = newPosSnakes.to;
+                alert("You found a ladder. Now you are on "+currentPlayerPosition);
+            }
             let row = currentPlayerPosition / 10;
             let col;
             if (row % 2) {
