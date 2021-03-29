@@ -9,93 +9,77 @@ class SnakesLadders extends Game {
     constructor() {
         super();
         let players = [
-            new Player('p1', 'red', 0),
-            new Player('p2', 'green', 0),
-            new Player('p3', 'yellow', 0),
-            new Player('p4', 'blue', 0),
+            new Player('Red', 'red', 0),
+            new Player('Green', 'green', 0),
+            new Player('Yellow', 'yellow', 0),
+            new Player('Blue', 'blue', 0),
         ]
         let snakes = [
             {
-                from:10,
-                to:1
+                from:17,
+                to:8
             },
             {
-                from:20,
-                to:11
+                from:54,
+                to:34
             },
             {
-                from:30,
-                to:21
+                from:62,
+                to:19
             },
             {
-                from:40,
-                to:31
+                from:64,
+                to:60
             },
             {
-                from:50,
-                to:41
+                from:87,
+                to:24
             },
             {
-                from:60,
-                to:51
+                from:93,
+                to:73
             },
             {
-                from:70,
-                to:61
+                from:95,
+                to:75
             },
             {
-                from:80,
-                to:71
-            },
-            {
-                from:89,
-                to:81
-            },
-            {
-                from:99,
-                to:11
+                from:98,
+                to:79
             },
         ]
         let ladders = [
             {
-                from:2,
-                to:12
-            },
-            {
-                from:22,
-                to:31
-            },
-            {
-                from:30,
-                to:81
+                from:1,
+                to:38
             },
             {
                 from:4,
+                to:14
+            },
+            {
+                from:9,
+                to:31
+            },
+            {
+                from:21,
+                to:42
+            },
+            {
+                from:29,
+                to:84
+            },
+            {
+                from:51,
+                to:67
+            },
+            {
+                from:71,
                 to:91
             },
             {
-                from:50,
-                to:68
-            },
-            {
-                from:33,
-                to:55
-            },
-            {
-                from:48,
-                to:61
-            },
-            {
                 from:80,
-                to:71
-            },
-            {
-                from:89,
-                to:81
-            },
-            {
-                from:99,
-                to:11
+                to:100
             },
         ]
         let currentPlayerIndex = 0;
@@ -114,6 +98,7 @@ class SnakesLadders extends Game {
             gameName: 'SnakesLadders',
             currentDiceFace: 0,
             dice: new Dice(6),
+            startsOn: 0,
             players,
             winner: undefined,
             currentPlayerIndex,
@@ -122,6 +107,7 @@ class SnakesLadders extends Game {
             ladders,
             history: []
         });
+        this.alert="";
 
     }
     switchPlayer() {
@@ -149,7 +135,7 @@ class SnakesLadders extends Game {
             console.log("The game has already ended");
             return;
         }
-
+        this.alert = "";
         let currentPlayer = this.configuration.players[this.configuration.currentPlayerIndex]
         // get board row and col at current player position
         let currentPlayerPosition = currentPlayer.position();
@@ -157,19 +143,25 @@ class SnakesLadders extends Game {
         this.configuration.currentDiceFace = this.configuration.dice.rollTheDice();
         currentPlayerPosition += this.configuration.currentDiceFace;
         console.log('current player is ', this.configuration.players[this.configuration.currentPlayerIndex]._name);
-        if(savedPlayerPosition == 0 && currentPlayerPosition != 1){
-            let message = "game starts when you get a 1 on the dice";
+        if(this.configuration.startsOn != 0 && savedPlayerPosition == 0 && currentPlayerPosition != this.configuration.startsOn){
+            let message = "game starts when you get a "+this.configuration.startsOn+" on the dice";
             console.log(message);
-            alert(message);
+            // alert(message);
+            this.alert = message;
+            this.switchPlayer();
         } else if (currentPlayerPosition <= 100) {
             let newPosSnakes = this.configuration.snakes.find(snake=>snake.from == currentPlayerPosition)
             let newPosLadders = this.configuration.ladders.find(ladder=>ladder.from == currentPlayerPosition)
             if(newPosSnakes){
                 currentPlayerPosition = newPosSnakes.to;
-                alert("A snake caught you. Now you are on "+currentPlayerPosition);
-            }else if(newPosLadders){
-                currentPlayerPosition = newPosSnakes.to;
-                alert("You found a ladder. Now you are on "+currentPlayerPosition);
+                let message = "A snake caught you. Now you are on "+currentPlayerPosition
+                // alert(message);
+                this.alert = message;
+            } else if(newPosLadders){
+                currentPlayerPosition = newPosLadders.to;
+                let message ="You found a ladder. Now you are on "+currentPlayerPosition;
+                // alert(message);
+                this.alert = message;
             }
             let row = currentPlayerPosition / 10;
             let col;
@@ -205,7 +197,11 @@ let game;
 let SnakesLaddersView = {
     oninit: (vnode) => {
         game = new SnakesLadders();
-        console.log('game view initialised');
+        if(game.configuration.startsOn >= 0 && game.configuration.startsOn <= game.configuration.dice.maxSides) {
+            console.log('game view initialised');
+        } else {
+            console.error('game cannot be initialised. please configure valid dice value to start game on.');
+        }
     },
     oncreate: (vnode) => {
         console.log('game view created');
@@ -350,28 +346,35 @@ let SnakesLaddersView = {
     Board: {
         view: () => {
             let displayBoard = []
-            for (let index = 0; index < 10; index++) {
+            console.log(game.configuration.players)
+            for (let index = 0; index <= 9; index++) {
                 let displayRow = [];
                 for (let index2 = 9; index2 >= 0; index2--) {
                     let pos = game.boardValue(index2, index);
                     let found = game.configuration.players.findIndex(player => player.position() === pos);
                     if (found != -1) {
+                        console.log({found})
                         displayRow.push(
                             m('.game-board-col',
-                                m(`div.s-l-cell`,
-                                    m(`div.s-l-${game.configuration.players[found].color()}#s-l-cell-${index2}${index}`, game.boardValue(index2, index))
+                                m(`div.s-l-cell#s-l-cell-${index}-${index2}`,
+                                    m(`div.s-l-${game.configuration.players[found].color()}`, ""
+                                    // game.boardValue(index2, index)
+                                    )
                                 ),
                             )
                         )
                     } else {
                         displayRow.push(
                             m('.game-board-col',
-                                m(`div.s-l-cell#s-l-cell-${index2}${index}`, game.boardValue(index2, index)),
+                                m(`div.s-l-cell#s-l-cell-${index}-${index2}`, ""
+                                // game.boardValue(index2, index)
+                                ),
                             )
                         )
                     }
                 }
                 displayBoard.push(m('.game-board-row', displayRow));
+                
             }
             return m('.game-board', displayBoard)
         }
@@ -395,9 +398,16 @@ let SnakesLaddersView = {
             } else {
                 let currentPlayer = game.configuration.players[game.configuration.currentPlayerIndex];
                 let name = currentPlayer._name
+                let color = currentPlayer._color
                 return m('.game-banner', [
                     m('.game-message', "Now playing " + name),
-                    m('button.btn-play-turn', { onclick: () => game.playTurn() }, "Play")
+                    m('button.btn-play-turn', { onclick: () => game.playTurn() }, 
+                        m(`.s-l-${color}`, { onclick: () => game.playTurn(), title:"Play "+name }, ""
+                            // game.boardValue(index2, index)
+                        )
+                    // "Play"
+                    ),
+                    m('.', game.alert || "")
                 ])
             }
         }

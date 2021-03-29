@@ -97,29 +97,55 @@
 .game-board-col .s-l-cell{
     width: 30px;
     height: 30px !important;
-    border: 2px black solid;
+    /* border: 2px black solid; */
     border-radius: 2px;
-    background-color: white;
+    /* background-color: white; */
 }
 
-.s-l-cell .s-l-red{
-    color: white;
-    background-color:red;
+.btn-play-turn {
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px !important;
+    /* border: 2px black solid; */
+    border-radius: 2px;
+    /* background-color: white; */
 }
 
-.s-l-cell .s-l-green{
+.s-l-cell .s-l-red, .btn-play-turn .s-l-red{
     color: white;
-    background-color:green;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* background-color:red; */
+    background-image: url("..\/..\/..\/res\/boardGames\/dice and pieces\/red piece.png");
 }
 
-.s-l-cell .s-l-blue{
+.s-l-cell .s-l-green, .btn-play-turn .s-l-green{
     color: white;
-    background-color:blue;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* background-color:green; */
+    background-image: url("..\/..\/..\/res\/boardGames\/dice and pieces\/green piece.png");
 }
 
-.s-l-cell .s-l-yellow {
+.s-l-cell .s-l-blue, .btn-play-turn .s-l-blue{
     color: white;
-    background-color:darkorange;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* background-color:blue; */
+    background-image: url("..\/..\/..\/res\/boardGames\/dice and pieces\/blue piece.png");
+}
+
+.s-l-cell .s-l-yellow, .btn-play-turn .s-l-yellow {
+    color: white;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* background-color:darkorange; */
+    background-image: url("..\/..\/..\/res\/boardGames\/dice and pieces\/yellow piece.png");
 }
 
 .game-banner .game-message{
@@ -132,3 +158,317 @@
     width: 10%;
     display: inline-block !important;
 }
+
+
+/* board background start */
+.game-board-col #s-l-cell-0-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,0.png")
+}
+.game-board-col #s-l-cell-0-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,1.png")
+}
+.game-board-col #s-l-cell-0-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,2.png")
+}
+.game-board-col #s-l-cell-0-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,3.png")
+}
+.game-board-col #s-l-cell-0-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,4.png")
+}
+.game-board-col #s-l-cell-0-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,5.png")
+}
+.game-board-col #s-l-cell-0-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,6.png")
+}
+.game-board-col #s-l-cell-0-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,7.png")
+}
+.game-board-col #s-l-cell-0-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,8.png")
+}
+.game-board-col #s-l-cell-0-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/0\,9.png")
+}
+
+.game-board-col #s-l-cell-1-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,0.png")
+}
+.game-board-col #s-l-cell-1-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,1.png")
+}
+.game-board-col #s-l-cell-1-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,2.png")
+}
+.game-board-col #s-l-cell-1-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,3.png")
+}
+.game-board-col #s-l-cell-1-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,4.png")
+}
+.game-board-col #s-l-cell-1-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,5.png")
+}
+.game-board-col #s-l-cell-1-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,6.png")
+}
+.game-board-col #s-l-cell-1-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,7.png")
+}
+.game-board-col #s-l-cell-1-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,8.png")
+}
+.game-board-col #s-l-cell-1-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/1\,9.png")
+}
+
+.game-board-col #s-l-cell-2-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,0.png")
+}
+.game-board-col #s-l-cell-2-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,1.png")
+}
+.game-board-col #s-l-cell-2-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,2.png")
+}
+.game-board-col #s-l-cell-2-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,3.png")
+}
+.game-board-col #s-l-cell-2-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,4.png")
+}
+.game-board-col #s-l-cell-2-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,5.png")
+}
+.game-board-col #s-l-cell-2-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,6.png")
+}
+.game-board-col #s-l-cell-2-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,7.png")
+}
+.game-board-col #s-l-cell-2-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,8.png")
+}
+.game-board-col #s-l-cell-2-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/2\,9.png")
+}
+
+.game-board-col #s-l-cell-3-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,0.png")
+}
+.game-board-col #s-l-cell-3-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,1.png")
+}
+.game-board-col #s-l-cell-3-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,2.png")
+}
+.game-board-col #s-l-cell-3-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,3.png")
+}
+.game-board-col #s-l-cell-3-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,4.png")
+}
+.game-board-col #s-l-cell-3-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,5.png")
+}
+.game-board-col #s-l-cell-3-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,6.png")
+}
+.game-board-col #s-l-cell-3-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,7.png")
+}
+.game-board-col #s-l-cell-3-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,8.png")
+}
+.game-board-col #s-l-cell-3-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/3\,9.png")
+}
+
+.game-board-col #s-l-cell-4-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,0.png")
+}
+.game-board-col #s-l-cell-4-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,1.png")
+}
+.game-board-col #s-l-cell-4-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,2.png")
+}
+.game-board-col #s-l-cell-4-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,3.png")
+}
+.game-board-col #s-l-cell-4-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,4.png")
+}
+.game-board-col #s-l-cell-4-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,5.png")
+}
+.game-board-col #s-l-cell-4-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,6.png")
+}
+.game-board-col #s-l-cell-4-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,7.png")
+}
+.game-board-col #s-l-cell-4-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,8.png")
+}
+.game-board-col #s-l-cell-4-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/4\,9.png")
+}
+
+.game-board-col #s-l-cell-5-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,0.png")
+}
+.game-board-col #s-l-cell-5-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,1.png")
+}
+.game-board-col #s-l-cell-5-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,2.png")
+}
+.game-board-col #s-l-cell-5-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,3.png")
+}
+.game-board-col #s-l-cell-5-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,4.png")
+}
+.game-board-col #s-l-cell-5-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,5.png")
+}
+.game-board-col #s-l-cell-5-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,6.png")
+}
+.game-board-col #s-l-cell-5-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,7.png")
+}
+.game-board-col #s-l-cell-5-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,8.png")
+}
+.game-board-col #s-l-cell-5-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/5\,9.png")
+}
+
+.game-board-col #s-l-cell-6-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,0.png")
+}
+.game-board-col #s-l-cell-6-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,1.png")
+}
+.game-board-col #s-l-cell-6-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,2.png")
+}
+.game-board-col #s-l-cell-6-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,3.png")
+}
+.game-board-col #s-l-cell-6-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,4.png")
+}
+.game-board-col #s-l-cell-6-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,5.png")
+}
+.game-board-col #s-l-cell-6-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,6.png")
+}
+.game-board-col #s-l-cell-6-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,7.png")
+}
+.game-board-col #s-l-cell-6-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,8.png")
+}
+.game-board-col #s-l-cell-6-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/6\,9.png")
+}
+
+.game-board-col #s-l-cell-7-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,0.png")
+}
+.game-board-col #s-l-cell-7-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,1.png")
+}
+.game-board-col #s-l-cell-7-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,2.png")
+}
+.game-board-col #s-l-cell-7-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,3.png")
+}
+.game-board-col #s-l-cell-7-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,4.png")
+}
+.game-board-col #s-l-cell-7-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,5.png")
+}
+.game-board-col #s-l-cell-7-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,6.png")
+}
+.game-board-col #s-l-cell-7-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,7.png")
+}
+.game-board-col #s-l-cell-7-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,8.png")
+}
+.game-board-col #s-l-cell-7-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/7\,9.png")
+}
+
+.game-board-col #s-l-cell-8-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,0.png")
+}
+.game-board-col #s-l-cell-8-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,1.png")
+}
+.game-board-col #s-l-cell-8-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,2.png")
+}
+.game-board-col #s-l-cell-8-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,3.png")
+}
+.game-board-col #s-l-cell-8-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,4.png")
+}
+.game-board-col #s-l-cell-8-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,5.png")
+}
+.game-board-col #s-l-cell-8-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,6.png")
+}
+.game-board-col #s-l-cell-8-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,7.png")
+}
+.game-board-col #s-l-cell-8-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,8.png")
+}
+.game-board-col #s-l-cell-8-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/8\,9.png")
+}
+
+.game-board-col #s-l-cell-9-0{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,0.png")
+}
+.game-board-col #s-l-cell-9-1{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,1.png")
+}
+.game-board-col #s-l-cell-9-2{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,2.png")
+}
+.game-board-col #s-l-cell-9-3{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,3.png")
+}
+.game-board-col #s-l-cell-9-4{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,4.png")
+}
+.game-board-col #s-l-cell-9-5{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,5.png")
+}
+.game-board-col #s-l-cell-9-6{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,6.png")
+}
+.game-board-col #s-l-cell-9-7{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,7.png")
+}
+.game-board-col #s-l-cell-9-8{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,8.png")
+}
+.game-board-col #s-l-cell-9-9{
+    background-image: url("..\/..\/..\/res\/boardGames\/snakes-and-ladders\/9\,9.png")
+}
+
+/* board background end */
