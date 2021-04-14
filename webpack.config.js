@@ -12,7 +12,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: './images',
-              publicPath: './bin/images',
+              publicPath: './images',
             },
           },
         ],
